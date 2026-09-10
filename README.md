@@ -1,13 +1,13 @@
 # 3. Criar e ativar o ambiente virtual
 Instale o virtualenv, caso ainda não esteja disponível:
-
 pip install virtualenv
+
 Crie o ambiente virtual:
-
 py -m venv .venv
-Ative o ambiente virtual:
 
+Ative o ambiente virtual:
 .venv\Scripts\activate
+
 Após a ativação, o início da linha de comando deverá apresentar (.venv).
 
 # 4. Instalar o Django
