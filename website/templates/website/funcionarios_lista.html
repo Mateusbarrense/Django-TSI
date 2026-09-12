@@ -1,0 +1,19 @@
+<table>
+    <h1>Lista de Funcionários</h1>
+    <tbody style="font-size: 20px; text-align: center; font-family: Arial, Helvetica, sans-serif;">
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Remuneração</th>
+            <th>Tempo de Serviço</th>
+        </tr>
+        {% for funcionario in funcionarios %}
+        <tr>
+            <td><strong>{{ funcionario.nome }}</strong></td>
+            <td>{{ funcionario.sobrenome }}</td>
+            <td>{{ funcionario.remuneracao }}</td>
+            <td>{{ funcionario.tempo_de_servico }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

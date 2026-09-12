@@ -16,10 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import (path, include)
+from website.views import ListaFuncionarios
 
 urlpatterns = [
     # Inclui as URLs do app website
     path('', include('website.urls', namespace='website')),
+    
     # Interface administrativa
     path('admin/', admin.site.urls),
+
+    path('funcionarios_lista/', ListaFuncionarios.as_view(), name='lista_funcionarios')
+
 ]
