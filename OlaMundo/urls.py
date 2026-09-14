@@ -21,7 +21,7 @@ from website.views import ListaFuncionarios
 urlpatterns = [
     # Inclui as URLs do app website
     path('', include('website.urls', namespace='website')),
-    
+
     # Interface administrativa
     path('admin/', admin.site.urls),
 

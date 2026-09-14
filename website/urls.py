@@ -9,7 +9,13 @@ app_name = 'website'
 # urlpatterns contém a lista de roteamentos de URLs
 urlpatterns = [
     # GET /
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
+    path('', views.IndexTemplateView.as_view(), name='index'),
 
     path('funcionarios_lista/', views.ListaFuncionarios.as_view(), name='lista_funcionarios'),
+
+    path(
+        'funcionario/<int:pk>',
+        views.FuncionarioUpdateView.as_view(),
+        name='atualiza_funcionario'),
 ]
