@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, TemplateView, UpdateView
 from OlaMundo.models import Funcionario
-
+from django import forms
 
 class ListaFuncionarios(ListView):
     template_name = "website/funcionarios_lista.html"
@@ -37,3 +38,33 @@ class FuncionarioUpdateView(UpdateView):
         'tempo_de_servico',
         'remuneracao'
 ]
+
+class FuncionarioDeleteView(DeleteView):
+    template_name = "website/exclui.html"
+    model = Funcionario
+    context_object_name = 'funcionario'
+    success_url = reverse_lazy(
+    "website:lista_funcionarios"
+)
+
+class InsereFuncionarioForm(forms.ModelForm):
+    class Meta:
+        # Modelo base
+        model = Funcionario
+        # Campos que estarão no form
+        fields = [
+        'nome',
+        'sobrenome',
+        'cpf',
+        'remuneracao'
+        ]
+        # Campos que não estarão no form
+        exclude = [
+        'tempo_de_servico'
+        ]
+
+class FuncionarioCreateView(CreateView):
+    template_name = "website/inclui.html"
+    model = Funcionario
+    form_class = InsereFuncionarioForm
+    success_url = reverse_lazy("website:lista_funcionarios")
