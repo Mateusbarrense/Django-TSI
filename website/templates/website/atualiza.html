@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste</title>
 </head>
+
 <body>
-    <h1>Atualize funcionário {{ funcionario.nome}} {{ funcionario.sobrenome }}</h1>
-    <form></form>
+    <h1>Atualize funcionário</h1>
+    <p>{{ funcionario.nome}} {{ funcionario.sobrenome }}</p>
+    <form id="AtualizaFuncionarioForm" method="post">
+
+        {% csrf_token %}
+
+
+        {{ form }}
+
+        <button type="submit">Atualizar</button>
+
+        <!-- <label for="remuneracao">Remuneração</label>
+        <input id="remuneracao" type="number">  
+        <button type="button">
+            <a href="{% url 'lista_funcionarios' %}">Cancelar</a>
+        </button>
+        <button type="submit">Atualizar</button> -->
+
+    </form>
 </body>
+
 </html>
