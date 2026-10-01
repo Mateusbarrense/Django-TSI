@@ -4,6 +4,8 @@ from django.views.generic import CreateView, DeleteView, ListView, TemplateView,
 from OlaMundo.models import Funcionario
 from django import forms
 
+from website.forms import AtualizaFuncionarioForm, InsereFuncionarioForm
+
 class ListaFuncionarios(ListView):
     template_name = "website/funcionarios_lista.html"
     model = Funcionario
@@ -29,21 +31,6 @@ def lista_funcionarios(request):
     # Retornamos o template para listar os funcionários
     return render(request, "website/funcionarios.html", contexto)
 
-class AtualizaFuncionarioForm(forms.ModelForm):
-    class Meta:
-        # Modelo base
-        model = Funcionario
-        # Campos que estarão no form
-        fields = [
-        'remuneracao'
-        ]
-        # Campos que não estarão no form
-        exclude = [
-        'nome',
-        'sobrenome',
-        'cpf',
-        'tempo_de_servico'
-        ]
 
 class FuncionarioUpdateView(UpdateView):
     template_name = 'website/atualiza.html'
@@ -67,21 +54,6 @@ class FuncionarioDeleteView(DeleteView):
     "website:lista_funcionarios"
 )
 
-class InsereFuncionarioForm(forms.ModelForm):
-    class Meta:
-        # Modelo base
-        model = Funcionario
-        # Campos que estarão no form
-        fields = [
-        'nome',
-        'sobrenome',
-        'cpf',
-        'remuneracao'
-        ]
-        # Campos que não estarão no form
-        exclude = [
-        'tempo_de_servico'
-        ]
 
 class FuncionarioCreateView(CreateView):
     template_name = "website/inclui.html"
